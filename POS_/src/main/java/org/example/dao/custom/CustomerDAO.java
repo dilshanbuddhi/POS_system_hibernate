@@ -8,4 +8,10 @@ import java.util.ArrayList;
 
 public interface CustomerDAO extends CrudDAO<Customer> {
     ArrayList<Customer> getAll(ServletContext ds);
+
+    boolean save(Customer customer, ServletContext context);
+
+    boolean update(Customer customer, ServletContext context);
+
+    boolean delete(Long id, ServletContext context);
 }

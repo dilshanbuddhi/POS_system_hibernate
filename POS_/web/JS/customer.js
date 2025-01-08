@@ -111,11 +111,11 @@
         let id = $('#cid').val();
         console.log(id);
         $.ajax({
-            url: `http://localhost:8080/Applicatoin1_Web_exploded/customer?id=${id}`,
+            url: `http://localhost:8080/POS__Web_exploded/customer?id=${id}`,
             method : 'DELETE',
             success : function (response) {
                 setcustomerdata();
-                clear();
+                //clear();
             },
             error : function (error){
                 console.log(error)

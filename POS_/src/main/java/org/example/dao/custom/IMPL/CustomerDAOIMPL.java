@@ -23,4 +23,37 @@ public class CustomerDAOIMPL implements CustomerDAO {
         session.close();
         return customers;
     }
+
+    @Override
+    public boolean save(Customer customer, ServletContext context) {
+        SessionFactory sessionFactory = (SessionFactory) context.getAttribute("SessionFactory");
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(customer);
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
+
+    @Override
+    public boolean update(Customer customer, ServletContext context) {
+        SessionFactory sessionFactory = (SessionFactory) context.getAttribute("SessionFactory");
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(customer);
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
+
+    @Override
+    public boolean delete(Long id, ServletContext context) {
+        SessionFactory sessionFactory = (SessionFactory) context.getAttribute("SessionFactory");
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(session.get(Customer.class, id));
+        session.getTransaction().commit();
+        session.close();
+        return true;
+    }
 }

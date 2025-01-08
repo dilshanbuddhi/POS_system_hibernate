@@ -15,13 +15,28 @@ public class CustomerBoOMPL implements CustomerBO {
 
     @Override
     public ArrayList<CustomerDTO> getAll(ServletContext servletContext) {
-     /*   ArrayList<Customer> customers = customerDAO.getAll(servletContext);
+        ArrayList<Customer> customers = customerDAO.getAll(servletContext);
         System.out.println("3");
         ArrayList<CustomerDTO> customerDTOS = new ArrayList<>();
         for (Customer customer : customers) {
+            System.out.println(customer.getAddress()+customer.getName());
             customerDTOS.add(new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress(), customer.getPhone()));
         }
-        return customerDTOS;*/
-        return null;
+        return customerDTOS;
+    }
+
+    @Override
+    public boolean saveCustomer(CustomerDTO customerDTO, ServletContext context) {
+        return customerDAO.save(new Customer(customerDTO.getName(), customerDTO.getAddress(), customerDTO.getPhone()), context);
+    }
+
+    @Override
+    public boolean updateCustomer(CustomerDTO customerDTO, ServletContext context) {
+        return customerDAO.update(new Customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getPhone()), context);
+    }
+
+    @Override
+    public boolean deleteCustomer(Long id, ServletContext context) {
+        return customerDAO.delete(id, context);
     }
 }

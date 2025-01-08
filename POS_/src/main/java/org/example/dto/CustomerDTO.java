@@ -10,9 +10,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerDTO {
-    private String id;
+    private Long id;
     private String name;
     private String address;
     private String phone;
 
+    public CustomerDTO(String name, String address, String phone) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+    }
 }

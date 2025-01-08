@@ -9,4 +9,10 @@ import java.util.ArrayList;
 public interface CustomerBO extends SuperBO {
 
     ArrayList<CustomerDTO> getAll(ServletContext ds);
+
+    boolean saveCustomer(CustomerDTO customerDTO, ServletContext context);
+
+    boolean updateCustomer(CustomerDTO customerDTO, ServletContext context);
+
+    boolean deleteCustomer(Long aLong, ServletContext context);
 }
